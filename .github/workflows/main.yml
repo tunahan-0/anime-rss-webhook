@@ -2,8 +2,8 @@ name: Animecix Bot
 
 on:
   schedule:
-    - cron: '*/30 * * * *' # Her 30 dakikada bir çalıştır
-  workflow_dispatch: # Manuel çalıştırmaya da izin ver
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
 
 jobs:
   build:
