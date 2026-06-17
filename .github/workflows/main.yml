@@ -1,7 +1,13 @@
 name: Animecix Bot
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
+  schedule:
+    # 30 dakikada bir çalıştırır
+    - cron: '*/30 * * * *'
 
 jobs:
   build:
@@ -14,6 +20,14 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-python-playwright-${{ hashFiles('**/requirements.txt') }}
 
       - name: Install dependencies
         run: |

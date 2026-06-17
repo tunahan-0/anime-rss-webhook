@@ -21,10 +21,21 @@ async def veritabani_hazirla():
     
 async def scrape():
     async with async_playwright() as p:
+        proxy_server = os.getenv("PROXY_SERVER")
+        proxy_user = os.getenv("PROXY_USER")
+        proxy_pass = os.getenv("PROXY_PASS")
         tarayici = await p.chromium.launch(headless=True) #headless = silent
-        sayfa = await tarayici.new_page()
+
+        context = await tarayici.new_context(
+            proxy={
+                "server": proxy_server,
+                "username": proxy_user,
+                "password": proxy_pass
+            }
+        )
+        sayfa = await context.new_page()
         await sayfa.goto("https://animecix.tv/", wait_until='networkidle')
-        print("Sayfa içeriği:", await sayfa.content())
+        print("Sayfa içeriği:", (await sayfa.content())[:500])
         await sayfa.wait_for_selector("episode-portrait-item")
         html = await sayfa.content()
         await tarayici.close()
