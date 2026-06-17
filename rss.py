@@ -24,6 +24,8 @@ async def scrape():
         tarayici = await p.chromium.launch(headless=True) #headless = silent
         sayfa = await tarayici.new_page()
         await sayfa.goto("https://animecix.tv/")
+        content = await sayfa.content()
+        print(f"Sayfa boyutu: {len(content)} karakter")
         await sayfa.wait_for_selector("episode-portrait-item")
         html = await sayfa.content()
         await tarayici.close()
