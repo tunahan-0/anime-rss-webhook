@@ -1,0 +1,29 @@
+name: Animecix Bot
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # Her 30 dakikada bir çalıştır
+  workflow_dispatch: # Manuel çalıştırmaya da izin ver
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+
+      - name: Run bot
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          ROL_ID: ${{ secrets.ROL_ID }}
+        run: python rss.py
