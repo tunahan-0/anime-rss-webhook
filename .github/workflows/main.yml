@@ -40,4 +40,7 @@ jobs:
           ROL_ID: ${{ secrets.ROL_ID }}
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_TOKEN: ${{ secrets.TURSO_TOKEN }}
+          PROXY_SERVER: ${{ secrets.PROXY_SERVER }}
+          PROXY_USER: ${{ secrets.PROXY_USER }}
+          PROXY_PASS: ${{ secrets.PROXY_PASS }}
         run: python rss.py
