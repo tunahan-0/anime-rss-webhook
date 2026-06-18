@@ -5,7 +5,11 @@ on:
     branches:
       - main
   schedule:
+<<<<<<< HEAD
     - cron: '*/15 * * * *'
+=======
+    - cron: '*/30 * * * *'
+>>>>>>> 5d5b4d508cd7da746f5e76a6bf4762addc16cfc3
   workflow_dispatch:
 
 jobs:
