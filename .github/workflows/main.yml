@@ -8,7 +8,7 @@ on:
     - cron: '*/30 * * * *'
   workflow_dispatch:
   repository_dispatch:
-    types: [my-trigger-event]
+    types: [Rss Trigger]
 
 jobs:
   build:
