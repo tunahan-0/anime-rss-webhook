@@ -1,12 +1,14 @@
-name: Animecix Bot
+name: Rss Bot
 
 on:
   push:
     branches:
       - main
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/30 * * * *'
   workflow_dispatch:
+  repository_dispatch:
+    types: [my-trigger-event]
 
 jobs:
   build:

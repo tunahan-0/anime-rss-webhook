@@ -35,8 +35,7 @@ async def scrape():
         )
         sayfa = await context.new_page()
         await sayfa.goto("https://animecix.tv/", wait_until='domcontentloaded', timeout=60000)
-        # debug icin
-        # print("Sayfa içeriği:", (await sayfa.content())[:500])
+        print("Sayfa içeriği:", (await sayfa.content())[:500]) # debug amaclı sayfanın iceriginin bir kısmı 
         await sayfa.wait_for_selector("episode-portrait-item")
         html = await sayfa.content()
         await tarayici.close()
