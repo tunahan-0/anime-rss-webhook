@@ -32,7 +32,8 @@ jobs:
 
       - name: Run bot
         env:
-          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          ACIX_WEBHOOK_URL: ${{ secrets.ACIX_WEBHOOK_URL }}
+          OPEN_WEBHOOK_URL: ${{ secrets.OPEN_WEBHOOK_URL }}
           ROL_ID: ${{ secrets.ROL_ID }}
           TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
           TURSO_TOKEN: ${{ secrets.TURSO_TOKEN }}
